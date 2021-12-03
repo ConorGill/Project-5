@@ -1,4 +1,3 @@
-
 /**
  * Enumeration class Colors - write a description of the enum class here
  * Made a value for every possible type of color
