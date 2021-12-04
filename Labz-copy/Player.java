@@ -20,10 +20,23 @@ public class Player
      * @param Name: name of the player
      * @param Balance: Balance of the player
      */
-    public Player(String Name,int Balance){
+    public Player(String Name,int Balance)throws UserError{
         this.name=Name;
         this.balance=Balance;
         this.hand=new ArrayList<Card>();
+        
+    }
+    //Gets score of the hand.
+    public int getScore(){
+        int x=0;
+        for(Card c:this.hand){
+            x=x+c.getValue();
+        }
+        return x;
+    }
+    //Gets the hand of the player.
+    public ArrayList<Card> getHand(){
+        return this.hand;
     }
     /*
      * Desc:Gets the balance of the player
@@ -31,11 +44,26 @@ public class Player
     public int getBalance(){
         return this.balance;
     }
+    //Set balance to appropiate amount
+    public void setBalance(int x)throws UserError{
+        if(x<1){
+               if(x==0){
+                   throw new UserError("You have to actually bet something you know");
+               }else{
+                   throw new UserError("You can't bet negative money.");   
+               }
+           }
+        this.balance=x;
+    }
     /*
      * Desc:Gets the name of the player.
      */
     public String getName(){
         return this.name;
+    }
+    //Desc: Sets the name of the player
+    public void setName(String x){
+        this.name=(x);
     }
     /*
      * Desc:Adds card to hand
@@ -43,6 +71,10 @@ public class Player
      */
     public void addCard(Card C){
         this.hand.add(C);
+    }
+    //Desc:Wipes the hand of the player
+    public void wipeHand(){
+        this.hand.clear();
     }
     //Desc: Method that prints out the hand of the player. 
     public void printHand(){
