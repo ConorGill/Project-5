@@ -29,6 +29,9 @@ public class Card
     public Suit getSuit(){
         return this.suit;
     }
+    public String printInfo(){
+        return this.rank + " of " + this.suit;
+    }
     /*
      * Desc: Determines the value of a card
      * @param r: Rank of the current card
@@ -63,6 +66,7 @@ public class Card
             break;
             case KING: x=10;
             break;
+            case ACEE: x=11;
         }
         this.Value=x;
     }
@@ -87,6 +91,14 @@ public class Card
             break;
         }
         this.Suit=x;
+    }
+    //Changes the value of an Ace card
+    public void changeAce(int x){
+        if(x==1){
+        this.rank=Rank.ACE;
+        }else{
+        this.rank=Rank.ACEE;
+        }
     }
     //Desc: Returns the name of the Suit
     public String getSuitName(){
